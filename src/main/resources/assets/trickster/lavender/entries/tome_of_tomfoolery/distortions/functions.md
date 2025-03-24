@@ -120,11 +120,11 @@ Executes the given spell in a single tick, blundering if it's not possible due t
 
 <|glyph@trickster:templates|trick-id=trickster:supplier,title=Supply Distortion|>
 
-any -> spell
+any, [any[]]-> spell
 
 ---
 
-Creates a new spell fragment which returns the previously provided fragment when executed.
+Creates a new spell with a given center fragment and subcircles.
 
 ;;;;;
 
