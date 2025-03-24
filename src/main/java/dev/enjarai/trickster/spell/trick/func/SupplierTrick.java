@@ -11,15 +11,16 @@ import dev.enjarai.trickster.spell.type.Signature;
 import dev.enjarai.trickster.spell.blunder.BlunderException;
 
 import java.util.Optional;
+import java.util.List;
 
 public class SupplierTrick extends Trick<SupplierTrick> {
     public SupplierTrick() {
-        super(Pattern.of(0, 1, 2, 5, 8, 7, 6, 3, 0), Signature.of(ANY, FragmentType.LIST.optionalOf(), SupplierTrick::run));
+        super(Pattern.of(0, 1, 2, 5, 8, 7, 6, 3, 0), Signature.of(ANY, Trick.list(FragmentType.SPELL_PART).optionalOf(), SupplierTrick::run));
     }
 
-    public Fragment run(SpellContext ctx, Fragment glyph, Optional<ListFragment> args ) throws BlunderException {
+    public Fragment run(SpellContext ctx, Fragment glyph, Optional<List<SpellPart>> args ) throws BlunderException {
         var spell = new SpellPart(glyph);
-        args.ifPresent(a -> spell.subParts = a.fragments().stream().map(SpellPart::new).toList());
+        args.ifPresent(subs -> {spell.subParts = subs;});
         return spell;
     }
 }

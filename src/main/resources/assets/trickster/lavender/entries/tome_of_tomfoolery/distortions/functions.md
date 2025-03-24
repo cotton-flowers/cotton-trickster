@@ -120,7 +120,7 @@ Executes the given spell in a single tick, blundering if it's not possible due t
 
 <|glyph@trickster:templates|trick-id=trickster:supplier,title=Supply Distortion|>
 
-any, [any[]]-> spell
+any, [spell[]]-> spell
 
 ---
 
